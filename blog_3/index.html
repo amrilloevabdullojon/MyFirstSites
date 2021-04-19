@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sardor_Blog </title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            font-family: 'Noto Sans KR', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .fsection{
+            max-width: 100vw;
+            min-height: 100vh;
+            background: url(images/headerbackground.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            /* background-blend-mode: multiply;
+            background-color: rgba(0, 0, 0, 0.349); */
+        }
+        .fsection .fnav{
+            width: 60vw;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            left: -20px;
+        }
+        .fsection .fnav .menu-contact{
+            margin-top: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .fsection .fnav .menu-contact li{
+            margin-left: 15px;
+            transition: .2s;
+        }
+        .fsection .fnav .menu-contact li:nth-child(1):hover a svg{
+            fill: #4267B2;
+            transform: scale(1.3 );
+            transition: .2s;
+        }
+        .fsection .fnav .menu-contact li:nth-child(2):hover a svg{
+            fill: #B00020;
+            transform: scale(1.3 );
+            transition: .2s;
+        }
+        .fsection .fnav .menu-contact li:nth-child(3):hover a svg{
+            fill:#FF0000;
+            transform: scale(1.3 );
+            transition: .2s;
+        }
+        .fsection .fnav .menu-contact li:nth-child(4):hover a svg{
+            fill: #E60023;
+            transform: scale(1.3 );
+            transition: .2s;
+        }
+        .fsection .fnav .menu-contact li:nth-child(5):hover a svg{
+            fill: #1DA1F2;
+            transform: scale(1.3 );
+            transition: .2s;
+        }
+        .fnav .menu-contact li a svg{
+            fill: #fff;
+        }
+        .menu-bar {
+            border-radius: 25px;
+            height: fit-content;
+            display: inline-flex;
+            /* background-color: rgba(0, 0, 0, 0.4); */
+            backdrop-filter: blur(10px);
+            align-items: center;
+            padding: 0 10px;
+            margin: 50px 0 0 0;
+        }
+            .menu-bar li {
+            list-style: none;
+            color: rgb(250, 250, 250);
+            font-family: sans-serif;
+            font-weight: bold;
+            padding: 12px 16px;
+            margin: 0 8px;
+            position: relative;
+            cursor: pointer;
+            white-space: nowrap;
+            text-transform: uppercase;
+        }
+        .menu-bar li::before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            transition: 0.2s;
+            border-radius: 25px;
+        }
+        .menu-bar li a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .menu-bar li:hover {
+            z-index: 1;
+        }
+        .menu-bar li:hover::before {
+            /* background: linear-gradient(to bottom, #e8edec, #d2d1d3); */
+            box-shadow: 0px 3px 20px 0px rgb(255, 255, 255);
+            transform: scale(1.2);
+        }
+        .fsection .name{
+            margin: 25px 0;
+        }
+        .fsection .name h1{
+            font-family: 'Dancing Script', cursive;
+            font-size: 4em;
+            color: #fff;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        .fsection .content{
+            box-sizing: border-box;
+            width: 60vw;
+            min-height: 70vh;
+            background: linear-gradient(to bottom, #00000034, #2b2b2b);
+            box-shadow: 0px -1px 4px 0px rgba(61, 61, 61, 0.322);
+            padding: 4em;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .fsection .content .leftcontblock{
+            width: 400px;
+            text-align: center;
+            color: #fff;
+        }
+        .fsection .content .leftcontblock h2{
+            font-size: 4em;
+            text-transform: uppercase;
+            line-height: .8em;
+        }
+        .fsection .content .leftcontblock span{
+            font-size: 1.5em;
+            font-family: 'Dancing Script', cursive;
+            line-height: 3em;
+        }
+        .fsection .content .leftcontblock p{
+            font-size: 1;
+            text-align: left;
+        }
+        .fsection .content .leftcontblock p::first-letter{
+            font-size: 1.5em;
+            padding-left: 3em;
+        }
+        .fsection .content .leftcontblock button, .leftBk button,.fssection .content button{
+            margin-top: 3em;
+            padding: 1em 3em;
+            border: none;
+            outline: none;
+            text-transform: uppercase;
+            background: #e53640;
+            color: #fff;
+            font-size: .8em;
+            cursor: pointer;
+        }
+        .fsection .content .leftcontblock button:hover{
+            background: #aa282e;
+        }
+        .leftBk button:hover{
+            background: #aa282e;
+        }
+        .fssection .content button:hover{
+            background: #aa282e;
+        }
+        .ssection{
+            overflow: hidden;
+        }
+        .ssection,.tsection,.fssection{
+            width: 100%;
+            height: auto;
+            /* background: url(images/bg2.jpg); */
+            /* background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat; */
+            background: rgb(157,157,157);
+            background: linear-gradient(90deg, rgba(157,157,157,1) 0%, rgba(246,246,246,1) 50%, rgba(157,157,157,1) 100%);
+        }
+        .ssection .content, .tsection .content{
+            box-sizing: border-box;
+            width: 60vw;
+            background: #2b2a30;
+            box-shadow: -1px 1px 5px 0px rgb(44, 44, 44);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 2em;
+            flex-wrap: wrap;
+        }
+        .ssection .content{
+            position: relative;
+        }
+        .ssection .content div{
+            margin: 2em auto;
+            color: #fff;
+            flex: 1;
+        }
+        .ssection .content .rightBk{
+            flex: 1.5;
+            margin-left: 4em;
+        }
+        .ssection .content .rightBk ul li{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .ssection .content .rightBk ul li .cont{
+            margin-left: 2em;
+        }
+        .ssection .content .rightBk ul li svg{
+            fill: #8a8a8c;
+        }
+        .ssection .content .rightBk ul li:hover svg{
+            fill: #fff;
+        } 
+        .ssection .content .rightBk ul li:hover .cont p{
+            color: #fff;
+        }
+        .ssection .content .rightBk ul li:hover .cont h3{
+            color: #fff;
+        }
+        .leftBk{
+            text-align: right;
+        }
+        .leftBk h2, .tsection .content h2{
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1em;
+            color: #8a8a8c;
+            margin-bottom: 1em;
+        }
+        .leftBk h2:hover{
+            color: #fff;
+        }
+        .leftBk p{
+            color: #8a8a8c;
+            margin-bottom: .5em;
+            font-size: .9em;
+            line-height: 1em;
+        }
+        .leftBk p:hover{
+            color: #fff;
+        }
+        .rightBk{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .rightBk h2{
+            position: relative;
+            top: .8em;
+            font-weight: 400;
+            letter-spacing: 2px;
+            color: #8a8a8c;
+            margin-bottom: 1em;
+        }
+        .rightBk h2:hover{
+            color: #fff;
+        }
+        .rightBk ul li .cont p, .rightBk ul li .cont h3{
+            color: #8a8a8c;
+            margin-bottom: .5em;
+            font-size: .9em;
+            line-height: 1em;
+        }
+        .rightBk ul li .cont h3{
+            font-size: 1.1em;
+        }
+        .rightBk ul li:hover img{
+            filter: invert(blue);
+            cursor: pointer;
+        }
+        .tsection .content{
+            display: flex;
+            flex-direction: column;
+            padding: 4em;
+            background-image: linear-gradient(to top, #a2a3a3 0%, #acacac 100%);
+        }
+        .tsection .content ul{
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1em;
+        }
+        .tsection .content ul li{
+            overflow-x: hidden;
+            position: relative;
+            width: 100px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 20px;
+            margin: .5em;
+            padding: .5em;
+            border: 3px solid #464646;
+            border-radius: 5px;
+            
+        }
+        .tsection .content ul li a{
+            font-size: .8em;
+            color: #464646;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .tsection .content ul li::before{
+            position: absolute;
+            top: 0;
+            left: -100%;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.137);
+            transition: .5s;
+        }
+        .tsection .content ul li:hover::before{
+            left: 0;
+            transition: .2s;
+        }
+        .tsection .content .gallerybox{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+        }
+        .tsection .content .gallerybox .tstimg{
+            position: relative;
+            overflow: hidden;
+            transition: .2s;
+        }
+        .tsection .content .gallerybox .tstimg::before{
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: '';
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.445);
+            transition: .2s;
+            transform: scale(0);
+        }
+        .tsection .content .gallerybox .tstimg:hover::before{
+            transform: scale(1);
+        }
+        .tsection .content .gallerybox .tstimg:hover img{
+            transition: .2s;
+        }
+        .tsection .content .gallerybox .tstimg::after{
+            position: absolute;
+            top: 45%;
+            left: 37%;
+            content: 'More';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 35px;
+            color: #fff;
+            text-transform: uppercase;
+            background: #e53640;
+            transition: .2s;
+            transform: scale(0);
+            cursor: pointer;
+        }
+        .tsection .content .gallerybox .tstimg:hover::after{
+            transform: scale(1);
+            transition: .2s;
+        }
+        .tsection .content .gallerybox .tstimg img{
+            width: 100%;
+            height: 100%;
+        }
+        .tsection .content h2{
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1em;
+            color: #464646;
+            text-transform: uppercase;
+        }
+        .tstblock{
+            width: 8vw;
+            height: 7vw;
+            background-color: #acacac;
+            position: absolute;
+            bottom: -15%;
+            left: 42%;
+            border-radius: 100% 100% 0 0;
+            z-index: 20;
+            /* box-shadow: ; */
+        }
+        .fssection .content{
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 1em;
+            border-radius: 100% 100% 0 0;
+            background: rgb(72,72,72);
+            background: linear-gradient(90deg, rgba(72,72,72,1) 100%, rgba(78,77,77,1) 100%); ;
+        }
+        .fssection h2{
+            width: 20%;
+            text-align: center;
+            margin: 2em auto;
+            white-space: nowrap;
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 400;
+            letter-spacing: 2px;
+            line-height: 1em;
+            color:#fff;
+        }
+        .content .contactForm{
+            position: relative;
+            width: 700px;
+            margin-top: 20px;
+        }
+        .content .contactForm .row{
+            width: 100%;
+            display: flex;
+        }
+        .content .contactForm .row .col50{
+            width: 100%;
+            margin: 10px;
+            overflow: hidden;
+        }
+        .content .contactForm .row .col100{
+            width: 100%;
+            margin: 10px;
+            text-align: center;
+        }
+        .content .contactForm .row input,.content .contactForm .row textarea{
+            width: 100%;
+            padding: 1em;
+            border: none;
+            outline: none;
+            background: linear-gradient(to top, #a2a3a3 0%, #acacac 100%);
+            color: #fff;
+            font-size: 16px;
+            resize: none;
+        }
+        .content .contactForm .row textarea{
+            height: 100px;
+        }
+
+        
+
+        /* hidden nav fo mobile */
+.sboxnav{
+    display: none;
+ }
+.nav ul {
+  display: none;
+}
+
+.nav-tgl {
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  z-index: 100;
+  right: 30px;
+  top: 30px;
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.24);
+  line-height: 0.6;
+  text-align: center;
+}
+.nav-tgl > span {
+  display: inline-block;
+  position: relative;
+  height: 2px;
+  width: 34px;
+  border-radius: 1px;
+  background: #293335;
+  vertical-align: middle;
+}
+.nav-tgl > span:before, .nav-tgl > span:after {
+  display: inline-block;
+  position: absolute;
+  content: "";
+  height: 2px;
+  border-radius: 1px;
+  background: #293335;
+  transition: all 200ms;
+}
+.nav-tgl > span:before {
+  top: -11px;
+  left: 3px;
+  width: 28px;
+}
+.nav-tgl > span:after {
+  top: 11px;
+  left: 6px;
+  width: 22px;
+}
+.nav-tgl:focus {
+  outline: none;
+}
+.nav-tgl:hover > span:after, .nav-tgl:hover > span:before {
+  width: 34px;
+  left: 0;
+}
+.nav-tgl.toggled > span {
+  height: 0;
+}
+.nav-tgl.toggled > span:after, .nav-tgl.toggled > span:before {
+  top: 0px;
+  left: 0;
+  width: 34px;
+}
+.nav-tgl.toggled > span:after {
+  transform: rotate(-45deg);
+}
+.nav-tgl.toggled > span:before {
+  transform: rotate(45deg);
+}
+
+.nav:before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  transition: all 500ms ease-in-out;
+  clip-path: circle(30px at calc(100% - 65px) 65px);
+  visibility: hidden;
+}
+
+.active.nav:before {
+  visibility: visible;
+  clip-path: circle(100%);
+}
+        @media only screen and (max-width: 1550px){
+
+            .fsection .content, .ssection .content, .tsection .content{
+                width: 80vw;
+            }
+        }
+        @media only screen and (max-width: 1410px){
+            .fsection .fnav{
+                width: 80vw;
+            }
+                        .fsection{
+                justify-content: space-between;
+            }
+        }
+        @media only screen and (max-width: 1120px){
+
+            .fsection .fnav .menu-contact li{
+                margin-left: 5px;
+            }
+
+            .menu-bar li {
+            padding: 12px 5px;
+            margin: 0 5px;
+        }
+
+    }
+        @media only screen and (max-width: 890px){
+            .fsection .content, .ssection .content, .tsection .content{
+                width: 90vw;
+            }
+
+            .sboxnav{
+                display: block;
+            }
+            .fsection .fnav{
+                display: none;
+            }
+            .fsection .fnav{
+            width: 80vw;
+        }
+            .fsection{
+                justify-content: space-between;
+            }
+            .fsection .content{
+                padding: 5em;
+        }
+
+        }
+    </style>
+</head>
+<body>
+<section class="fsection">
+    <div class="fnav">
+        <ul class="menu-bar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#aboutus">About Us</a></li>
+            <li><a href="#potfolio">Portfolio</a></li>
+            <li><a href="#service">Services</a></li>
+            <li><a href="#contact">Contacts Us</a></li>
+        </ul>
+        <ul class="menu-contact">
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-10.333 16.667c-2.581 0-4.667-2.087-4.667-4.667s2.086-4.667 4.667-4.667c1.26 0 2.313.46 3.127 1.22l-1.267 1.22c-.347-.333-.954-.72-1.86-.72-1.593 0-2.893 1.32-2.893 2.947s1.3 2.947 2.893 2.947c1.847 0 2.54-1.327 2.647-2.013h-2.647v-1.6h4.406c.041.233.074.467.074.773-.001 2.666-1.787 4.56-4.48 4.56zm11.333-4h-2v2h-1.334v-2h-2v-1.333h2v-2h1.334v2h2v1.333z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M10 9.333l5.333 2.662-5.333 2.672v-5.334zm14-4.333v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-4 7c-.02-4.123-.323-5.7-2.923-5.877-2.403-.164-7.754-.163-10.153 0-2.598.177-2.904 1.747-2.924 5.877.02 4.123.323 5.7 2.923 5.877 2.399.163 7.75.164 10.153 0 2.598-.177 2.904-1.747 2.924-5.877z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-7 20c-.825 0-1.62-.125-2.369-.357.326-.531.813-1.402.994-2.098l.499-1.901c.261.498 1.023.918 1.833.918 2.414 0 4.152-2.219 4.152-4.976 0-2.643-2.157-4.62-4.933-4.62-3.452 0-5.286 2.317-5.286 4.841 0 1.174.625 2.634 1.624 3.1.151.07.232.039.268-.107l.222-.907c.019-.081.01-.15-.056-.23-.331-.4-.595-1.138-.595-1.825 0-1.765 1.336-3.472 3.612-3.472 1.965 0 3.341 1.339 3.341 3.255 0 2.164-1.093 3.663-2.515 3.663-.786 0-1.374-.649-1.185-1.446.226-.951.663-1.977.663-2.664 0-.614-.33-1.127-1.012-1.127-.803 0-1.448.831-1.448 1.943 0 .709.239 1.188.239 1.188s-.793 3.353-.938 3.977c-.161.691-.098 1.662-.028 2.294-2.974-1.165-5.082-4.06-5.082-7.449 0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-.139 9.237c.209 4.617-3.234 9.765-9.33 9.765-1.854 0-3.579-.543-5.032-1.475 1.742.205 3.48-.278 4.86-1.359-1.437-.027-2.649-.976-3.066-2.28.515.098 1.021.069 1.482-.056-1.579-.317-2.668-1.739-2.633-3.26.442.246.949.394 1.486.411-1.461-.977-1.875-2.907-1.016-4.383 1.619 1.986 4.038 3.293 6.766 3.43-.479-2.053 1.08-4.03 3.199-4.03.943 0 1.797.398 2.395 1.037.748-.147 1.451-.42 2.086-.796-.246.767-.766 1.41-1.443 1.816.664-.08 1.297-.256 1.885-.517-.439.656-.996 1.234-1.639 1.697z"/></svg></a></li>
+        </ul>
+    </div>
+    <div class="sboxnav">
+    <button class="nav-tgl" type="button" aria-label="toggle menu">
+       <span aria-hidden="true"></span>
+      </button>
+      <nav class="nav">
+        <ul>
+          <li>element one</li>
+          <li>element two</li>
+          <li>element three</li>
+          <li>element four</li>
+        </ul>
+        <ul class="menu-contact">
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-3 7h-1.924c-.615 0-1.076.252-1.076.889v1.111h3l-.238 3h-2.762v8h-3v-8h-2v-3h2v-1.923c0-2.022 1.064-3.077 3.461-3.077h2.539v3z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-10.333 16.667c-2.581 0-4.667-2.087-4.667-4.667s2.086-4.667 4.667-4.667c1.26 0 2.313.46 3.127 1.22l-1.267 1.22c-.347-.333-.954-.72-1.86-.72-1.593 0-2.893 1.32-2.893 2.947s1.3 2.947 2.893 2.947c1.847 0 2.54-1.327 2.647-2.013h-2.647v-1.6h4.406c.041.233.074.467.074.773-.001 2.666-1.787 4.56-4.48 4.56zm11.333-4h-2v2h-1.334v-2h-2v-1.333h2v-2h1.334v2h2v1.333z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M10 9.333l5.333 2.662-5.333 2.672v-5.334zm14-4.333v14c0 2.761-2.238 5-5 5h-14c-2.761 0-5-2.239-5-5v-14c0-2.761 2.239-5 5-5h14c2.762 0 5 2.239 5 5zm-4 7c-.02-4.123-.323-5.7-2.923-5.877-2.403-.164-7.754-.163-10.153 0-2.598.177-2.904 1.747-2.924 5.877.02 4.123.323 5.7 2.923 5.877 2.399.163 7.75.164 10.153 0 2.598-.177 2.904-1.747 2.924-5.877z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-7 20c-.825 0-1.62-.125-2.369-.357.326-.531.813-1.402.994-2.098l.499-1.901c.261.498 1.023.918 1.833.918 2.414 0 4.152-2.219 4.152-4.976 0-2.643-2.157-4.62-4.933-4.62-3.452 0-5.286 2.317-5.286 4.841 0 1.174.625 2.634 1.624 3.1.151.07.232.039.268-.107l.222-.907c.019-.081.01-.15-.056-.23-.331-.4-.595-1.138-.595-1.825 0-1.765 1.336-3.472 3.612-3.472 1.965 0 3.341 1.339 3.341 3.255 0 2.164-1.093 3.663-2.515 3.663-.786 0-1.374-.649-1.185-1.446.226-.951.663-1.977.663-2.664 0-.614-.33-1.127-1.012-1.127-.803 0-1.448.831-1.448 1.943 0 .709.239 1.188.239 1.188s-.793 3.353-.938 3.977c-.161.691-.098 1.662-.028 2.294-2.974-1.165-5.082-4.06-5.082-7.449 0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg></a></li>
+            <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-.139 9.237c.209 4.617-3.234 9.765-9.33 9.765-1.854 0-3.579-.543-5.032-1.475 1.742.205 3.48-.278 4.86-1.359-1.437-.027-2.649-.976-3.066-2.28.515.098 1.021.069 1.482-.056-1.579-.317-2.668-1.739-2.633-3.26.442.246.949.394 1.486.411-1.461-.977-1.875-2.907-1.016-4.383 1.619 1.986 4.038 3.293 6.766 3.43-.479-2.053 1.08-4.03 3.199-4.03.943 0 1.797.398 2.395 1.037.748-.147 1.451-.42 2.086-.796-.246.767-.766 1.41-1.443 1.816.664-.08 1.297-.256 1.885-.517-.439.656-.996 1.234-1.639 1.697z"/></svg></a></li>
+        </ul>
+      </nav>
+     </div>   
+    <div class="name">
+        <h1>Sardor</h1>
+    </div>
+    <div class="content">
+        <div class="leftcontblock">
+            <h2>I am <br>Designer</h2>
+            <span>I Make Wonderful Things</span>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate vero alias enim qui inventore totam fugiat nobis provident aperiam magni, rerum laborum delectus? Modi voluptates dolore omnis? Dignissimos</p>
+            <button>Read More</button>
+        </div>
+    </div>
+</section>
+
+<section class="ssection" id="aboutus">
+   <div class="content">
+    <div class="leftBk">
+        <h2>Creative and <br>Professional</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur minima quam qui optio, error, sunt autem hic eaque quibusdam repellat consectetur facilis animi nostrum laudantium, nemo dolorum nobis molestiae. Tempora quis pariatur ab aspernatur et labore fugit minima enim? Laborum incidunt beatae distinctio fugiat recusandae ad velit temporibus atque et!</p>
+        <br>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente iure qui dignissimos repudiandae quia, earum aspernatur delectus iste nam est quas voluptatum? Iste voluptatem ad placeat ratione nostrum vitae facere.</p>
+        <button>Read More</button>
+    </div>
+    <div class="rightBk">
+        <h2>My Skills</h2>
+        <ul>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" width="100" version="1.1" x="0px" y="0px" viewBox="0 0 100 125" enable-background="new 0 0 100 100" xml:space="preserve"><g><path d="M41.751,59.098v6.119L20,55.789v-5.232l21.751-9.427v6.162l-15.156,5.839L41.751,59.098z"/><path d="M55.2,41l-6.055,24.93c-0.201,0.821-0.377,1.471-0.529,1.946c-0.151,0.476-0.382,0.849-0.691,1.112   c-0.31,0.268-0.761,0.4-1.352,0.4c-1.47,0-2.206-0.636-2.206-1.902c0-0.332,0.145-1.16,0.433-2.486l6.033-24.93   c0.317-1.326,0.619-2.234,0.907-2.724c0.289-0.49,0.851-0.735,1.688-0.735c0.721,0,1.271,0.173,1.653,0.519   c0.382,0.346,0.573,0.822,0.573,1.427C55.654,39.004,55.502,39.818,55.2,41z"/><path d="M80,55.789L58.249,65.26v-6.119l15.2-5.967l-15.2-5.882v-6.076L80,50.6V55.789z"/></g><path d="M94,6H6c-3.313,0-6,2.687-6,6v76c0,3.313,2.687,6,6,6h88c3.314,0,6-2.688,6-6V12C100,8.686,97.314,6,94,6z M79,10  c2.205,0,4,1.794,4,4s-1.795,4-4,4s-4-1.794-4-4S76.795,10,79,10z M68,10c2.205,0,4,1.794,4,4s-1.795,4-4,4s-4-1.794-4-4  S65.795,10,68,10z M94,88H6V22h88V88z M90,18c-2.205,0-4-1.794-4-4s1.795-4,4-4s4,1.794,4,4S92.205,18,90,18z"/></svg> 
+                <div class="cont">
+                    <h3>Web Design</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, quaerat!</p>
+                </div>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" width="100" version="1.1" x="0px" y="0px" viewBox="0 0 65 81.25" enable-background="new 0 0 65 65" xml:space="preserve"><g><rect x="48.1" y="23.2" width="4.5" height="1.5"/><path d="M53.1,55.4h-5.6c-0.4,0-0.7,0.3-0.7,0.7c0,0.4,0.3,0.7,0.7,0.7h5.6c0.4,0,0.7-0.3,0.7-0.7C53.9,55.8,53.5,55.4,53.1,55.4z"/><path d="M62.7,20.6h-6.4V7.9c0-1.5-1.2-2.6-2.6-2.6h-47C5.2,5.3,4,6.5,4,7.9V40h-4.2v3l2.8,3.7h34.5v10.5c0,1.4,1.1,2.5,2.5,2.5   h23.1c1.4,0,2.5-1.1,2.5-2.5V23.1C65.2,21.7,64.1,20.6,62.7,20.6z M63.7,23.1v3H38.6v-3c0-0.6,0.5-1,1-1h23.1   C63.3,22.1,63.7,22.5,63.7,23.1z M38.6,27.6h25.1v25H38.6V27.6z M6.7,6.8h47c0.6,0,1.1,0.5,1.1,1.1v2.5H5.5V7.9   C5.5,7.3,6,6.8,6.7,6.8z M5.5,11.9h49.3v8.7H39.6c-1.4,0-2.5,1.1-2.5,2.5v17H5.5V11.9z M3.3,45.2l-2-2.7v-1h35.8v3.7H3.3z    M62.7,58.2H39.6c-0.6,0-1-0.5-1-1v-3.1h25.1v3.1C63.7,57.8,63.3,58.2,62.7,58.2z"/><path d="M31.4,27.9l0-4.1l-2.3-0.4c-0.2-0.8-0.5-1.5-0.9-2.2l1.4-1.9l-2.9-2.9l-2,1.3c-0.7-0.4-1.4-0.7-2.2-0.9l-0.4-2.3l-4.1,0   l-0.4,2.3c-0.8,0.2-1.5,0.5-2.2,0.9l-1.9-1.4l-2.9,2.8l1.3,2c-0.4,0.7-0.7,1.4-0.9,2.2l-2.3,0.4l0,4.1l2.3,0.4   c0.2,0.8,0.5,1.5,0.9,2.2l-1.4,1.9l2.9,2.9l2-1.3c0.7,0.4,1.4,0.7,2.2,0.9l0.4,2.3l4.1,0l0.4-2.3c0.8-0.2,1.5-0.5,2.2-0.9l1.9,1.4   l2.9-2.9l-1.3-2c0.4-0.7,0.7-1.4,0.9-2.2L31.4,27.9z M27.8,27.1l-0.1,0.5c-0.2,0.9-0.6,1.8-1.1,2.6l-0.3,0.4l1.2,1.7l-1.1,1.1   l-1.7-1.2l-0.4,0.3c-0.8,0.5-1.7,0.9-2.6,1.1l-0.5,0.1l-0.4,2.1l-1.6,0l-0.4-2.1l-0.5-0.1c-0.9-0.2-1.8-0.6-2.6-1.1l-0.4-0.3   l-1.7,1.2l-1.1-1.1l1.2-1.7l-0.3-0.4c-0.5-0.8-0.9-1.7-1.1-2.6L12.2,27l-2.1-0.4l0-1.6l2.1-0.4l0.1-0.5c0.2-0.9,0.6-1.8,1.1-2.6   l0.3-0.4l-1.2-1.7l1.1-1.1l1.7,1.2l0.4-0.3c0.8-0.5,1.7-0.9,2.6-1.1l0.5-0.1l0.4-2.1l1.6,0l0.4,2.1l0.5,0.1   c0.9,0.2,1.8,0.6,2.6,1.1l0.4,0.3l1.7-1.2l1.1,1.1l-1.2,1.7l0.3,0.4c0.5,0.8,0.9,1.7,1.1,2.6l0.1,0.5l2.1,0.4l0,1.6L27.8,27.1z"/><path d="M20,21.1c-2.6,0-4.8,2.1-4.8,4.8c0,2.6,2.1,4.8,4.8,4.8h0c2.6,0,4.8-2.1,4.8-4.8c0-1.3-0.5-2.5-1.4-3.4   C22.5,21.6,21.3,21.1,20,21.1z M20,29.1v0.7V29.1c-1.8,0-3.3-1.5-3.3-3.3c0-1.8,1.5-3.3,3.3-3.3c0.9,0,1.7,0.4,2.3,1   c0.6,0.6,1,1.5,1,2.3C23.3,27.7,21.8,29.1,20,29.1z"/><polygon points="56,36.6 55,37.8 57.9,40.1 55,42.5 56,43.6 60.3,40.1  "/><polygon points="46.3,36.6 42.1,40.1 46.3,43.6 47.3,42.5 44.4,40.1 47.3,37.8  "/><rect x="50.4" y="33.7" transform="matrix(-0.8964 -0.4433 0.4433 -0.8964 79.2415 98.8167)" width="1.5" height="12.9"/></g></svg>
+                <div class="cont">
+                    <h3>Content Writing</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, quaerat!</p>
+                </div>
+            </li>
+            <li>
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="100" width="100" version="1.1" x="0px" y="0px" viewBox="0 0 128 160" style="enable-background:new 0 0 128 128;" xml:space="preserve"><path d="M92,102H56.894l30.213-24.616c3.4-2.771,3.872-7.746,1.049-11.087l-4.613-5.456c-2.824-3.34-7.889-3.802-11.291-1.03  l-30.9,25.178c-0.001,0.001-0.003,0.005-0.005,0.007c-0.187,0.151-0.332,0.345-0.455,0.552c-0.032,0.054-0.062,0.105-0.087,0.163  c-0.024,0.047-0.059,0.088-0.077,0.14l-6.598,17.38c-0.037,0.098-0.048,0.198-0.069,0.299c-0.009,0.037-0.018,0.073-0.025,0.11  c-0.012,0.076-0.019,0.151-0.022,0.228C34.011,103.911,34,103.954,34,104c0,1.067,0.839,1.932,1.892,1.989  c0.004,0,0.007,0.001,0.011,0.001C35.935,105.992,35.967,106,36,106h56c1.104,0,2-0.896,2-2S93.104,102,92,102z M74.923,62.97  c1.628-1.325,4.052-1.106,5.402,0.494l4.612,5.455c1.352,1.599,1.125,3.978-0.503,5.304l-1.675,1.363l-9.511-11.251L74.923,62.97z   M70.032,66.956l9.512,11.252L55.144,98.089l-9.512-11.252L70.032,66.956z M43.385,90.608l7.402,8.757l-11.467,1.947L43.385,90.608z  "/><path d="M92,22H36c-1.105,0-2-0.896-2-2s0.895-2,2-2h56c1.104,0,2,0.896,2,2S93.104,22,92,22z"/><path d="M92,30H36c-1.105,0-2-0.896-2-2s0.895-2,2-2h56c1.104,0,2,0.896,2,2S93.104,30,92,30z"/><path d="M92,38H36c-1.105,0-2-0.896-2-2s0.895-2,2-2h56c1.104,0,2,0.896,2,2S93.104,38,92,38z"/><path d="M92,46H36c-1.105,0-2-0.896-2-2s0.895-2,2-2h56c1.104,0,2,0.896,2,2S93.104,46,92,46z"/><path d="M92,54H36c-1.105,0-2-0.896-2-2s0.895-2,2-2h56c1.104,0,2,0.896,2,2S93.104,54,92,54z"/><path d="M108,4c2.206,0,4,1.794,4,4v112c0,2.206-1.794,4-4,4H20c-2.206,0-4-1.794-4-4V8c0-2.206,1.794-4,4-4H108 M108,0H20  c-4.418,0-8,3.582-8,8v112c0,4.418,3.582,8,8,8h88c4.418,0,8-3.582,8-8V8C116,3.582,112.418,0,108,0L108,0z"/></svg>
+                <div class="cont">
+                    <h3>Web Development</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, quaerat!</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="tstblock"></div>
+</div> 
+</section>
+<section class="tsection" id="potfolio">
+    <div class="content">
+        <h2>Selected Work</h2>
+        <ul>
+            <li><a href="#">All</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Logo Design</a></li>
+            <li><a href="#">Branding</a></li>
+        </ul>
+        <div class="gallerybox">
+            <div class="tstimg">
+                <img src="images/1g.jpg" alt="">
+            </div>
+            <div class="tstimg">
+                <img src="images/2g.jpg" alt="">
+            </div>
+            <div class="tstimg">
+                <img src="images/3g.jpg" alt="">
+            </div>
+            <div class="tstimg">
+                <img src="images/4g.jpg" alt="">
+            </div>
+        </div>
+        <div class="tsbblock"></div>
+</div>
+</section>
+<footer class="fssection" id="contact">
+    
+    <div class="content">
+        <h2>Get in touch</h2>
+        <div class="contactForm">
+            <div class="row">
+                <div class="col50">
+                    <input type="text" placeholder="Name">
+                </div>
+                <div style="margin-left: 0;position: relative; left: 30px;" class="col50">
+                    <input type="text" placeholder="Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col100">
+                    <textarea placeholder="Message"></textarea>
+                </div>
+            </div>
+        </div>
+        <button>submit</button>
+        </div>
+</footer>
+<script>
+let toggled = false;
+const nav = document.getElementsByClassName('nav')[0];
+const btn = document.getElementsByClassName('nav-tgl')[0];
+btn.onclick = function(evt) {
+  if (!toggled) {
+    toggled = true;
+    evt.target.classList.add('toggled');
+    nav.classList.add('active');
+  } else {
+    toggled = false;
+    evt.target.classList.remove('toggled');
+    nav.classList.remove('active');
+  }
+}
+</script>
+</body>
+</html>

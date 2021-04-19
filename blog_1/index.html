@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- <link rel="stylesheet" href="styles/bootstrap.min.css"> -->
+    <title>Blog</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
+        
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+.toggle{
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #000 url(images/menu.png);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: all .2s ;
+    z-index: 100;
+}
+.toggle.active{
+    background: #000 url(images/close.png);
+    background-size: 25px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all .2 ;
+}
+section{
+
+    padding: 100px;
+    min-height: 100vh;
+}
+.banner{
+    position: relative;
+    width: 100%;
+}
+.banner .imgSidebar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 500px;
+    height: 100%;
+}
+.banner .imgSidebar img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.banner .contentBx,
+.sidebar{
+    position: absolute;
+    top: 0;
+    right: 0; 
+    width: calc(100% - 500px);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+}
+.logoText{
+    position: absolute;
+    top: 40px;
+    left: 100px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #333;
+    color: #fff;
+}
+.banner .contentBx h4{
+    font-size: 1.5em;
+    color: #333;
+    font-weight: 300;
+}
+
+.banner .contentBx h4 span{
+    color: #00bcd4;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.banner .contentBx h2{
+    font-size: 3em;
+    color: #333;
+    line-height: 1em;
+}
+
+p{
+    font-size: 1.1em;
+    margin: 20px 0;
+    font-weight: 300;
+}
+.btn{
+    background:#00bcd4;
+    color: #fff;
+    padding: 10px 30px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+}
+.sidebar{
+    position: fixed;
+    background:#000;
+    display: flex;
+    justify-content: center;
+    transition: .5s;
+    padding: 40px;
+    z-index: 99;
+    right: -100%;
+}
+.sidebar.active{
+    right: 0;
+}
+.sidebar ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.sidebar ul li{
+list-style: none;
+}
+.sidebar ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    margin: 10px 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+.sidebar ul li a:hover{
+    color: #00bcd4;
+}
+.sci{
+    position: absolute;
+    left: 100px;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sci li{
+    margin-right: 10px;
+    list-style: none;
+}
+.sci li img{
+    transform: scale(.5);
+    opacity: .7;
+    transition: .2s;
+}
+.sci li img:hover{
+    transition: .2s;
+    transform: scale(1);
+    opacity: 1;
+}
+.title{
+    width: 100%;
+    text-align: center;
+}
+.title h2{
+    position: relative;
+    color: #00bcd4;
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.title p{
+    max-width: 700px;
+    display: inline-block;
+}
+.title h2::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+    width: 60px;
+    height: 4px;
+    background:#000;
+}
+.title.white h2,
+.title.white p{
+color: #fff;
+}
+.title.white h2::before{
+    background: #fff;
+}
+.about, .contact{
+ background: #000;
+
+}
+.about .content{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.about .content .textBx{
+    min-width: 49%;
+    width: 49%;
+}
+.about .content .textBx p{
+    color: #fff;
+}
+.about .content .imgBx{
+    margin-left: 40px;
+}
+.about .content .imgBx img{
+    max-width: 100%;
+}
+.services .content{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.services .content .serviceBx{
+    padding: 40px;
+    max-width: 340px;
+    margin: 20px;
+    transition: .5s;
+    text-align: center;
+    background: #f5f5f5;
+}
+.services .content .serviceBx:hover{
+    background: #000;
+}
+.services .content .serviceBx img{
+    max-width: 80px;
+    transition: .5s;
+}
+.services .content .serviceBx:hover img{
+    filter: invert(1);
+}
+.services .content .serviceBx h2{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: .5s;
+}
+.services .content .serviceBx:hover h2{
+    color: #fff;
+}
+.services .content .serviceBx p{
+    margin: 0;
+    transition: .5s;
+}
+.services .content .serviceBx:hover p{
+color: #fff;
+}
+.work .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.work .content .workbx{
+    position: relative;
+    width: 265px;
+    height: 265px;
+    margin: 10px;
+    transition: .5s;
+    text-align: center;
+}
+.work .content .workbx .imgBx,
+.work .content .workbx .textBx
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.work .content .workbx .textBx{
+    background: #000;
+    opacity: 0;
+    transition: .5s;
+}
+.work .content .workbx:hover .textBx{
+    opacity: 1;
+}
+.work .content .workbx .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.work .content .workbx .textBx h3{
+color: #fff;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-size: 1em;
+}
+.contact{
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.contact .contactForm{
+    position: relative;
+    width: 700px;
+    margin-top: 20px;
+}
+.contact .contactForm .row{
+    width: 100%;
+    display: flex;
+}
+.contact .contactForm .row .col50{
+    width: 50%;
+    margin: 10px;
+}
+.contact .contactForm .row .col100{
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+.contact .contactForm .row input,.contact .contactForm .row textarea{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: #111;
+    color: #fff;
+    font-size: 16px;
+    resize: none;
+}
+.contact .contactForm .row textarea{
+    height: 100px;
+}
+.contact .contactForm .row input[type="submit"]{
+    background: #00bcd4;
+    color: #fff;
+    padding: 10px 30px;
+    display: inline-block;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    max-width: 150px;
+}
+@media(max-width: 991px){
+    .banner .imgSidebar{
+        display: none;
+    }
+    .banner .contentBx, .sidebar{
+        width: 100%;
+        padding: 40px;
+    }
+    .logoText{
+        left: 40px;
+    }
+    .toggle{
+        right: 40px;
+    }
+    .sci{
+        left:40px
+    }
+    section{
+        padding: 40px;
+    }
+    .about .content{
+        flex-direction: column;
+    }
+    .about .content .textBx{
+        min-width: 100%;
+        width: 100%;
+    }
+    .about .content{
+        margin-top: 0;
+    }
+    .about .content .imgBx {
+        margin-left: 0;
+    }
+    .services .content .serviceBx {
+        padding: 30px 20px;
+        max-width: 340px;
+        margin: 10px;
+    }
+   .contact .contactForm{
+        width: 100%;
+    }
+    .contactForm .row{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+   .contact .contactForm .row .col50{
+       width: 100%;
+   }
+   .sidebar ul li a{
+    font-size: 1.5em;
+   }
+}
+@media (max-width: 500px) {
+    .services .content .serviceBx,
+    .work .content .workbx
+    {
+        max-width: 100%;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+  
+
+    </style>
+</head>
+<body>
+
+  <div class="toggle" onclick="toggleMenu()"></div>
+
+
+  <section class="banner" id="home">
+      <div class="imgSidebar">
+            <img src="images/bg.jpg" alt="">
+      </div>
+     <div class="contentBx">
+        <h5 class="logoText">My_Blog</h5>
+        <div>
+            <h4><span>Hello</span>, I'm</h4>
+            <h2>Amrilloev Abdullo</h2>
+            <h4>I'm FullStack Web Developer</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat unde veniam aperiam vitae? Blanditiis doloribus ullam repellendus quidem quae nemo!</p>
+            <a href="#" class="btn">About Me</a>
+        </div>
+        <ul class="sci">
+            <li><a href="#"><img src="images/facebook.png" alt=""></a></li>
+            <li><a href="#"><img src="images/twitter.png" alt=""></a></li>
+            <li><a href="#"><img src="images/instagram.png" alt=""></a></li>
+         </ul>
+     </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="title white">
+        <h2>About Us</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, quas.</p>
+    </div>
+    <div class="content">
+        <div class="textBx">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum totam officia pariatur? Voluptate voluptatum sunt quos quaerat maiores eos pariatur repellat ad excepturi velit tempore, eveniet temporibus nisi. Minima error recusandae quisquam. Molestias assumenda velit excepturi quisquam aliquam ducimus totam eum ab quam fuga omnis adipisci culpa autem, tempore sed. Amet eum pariatur dolorum tempore? Amet optio porro voluptatum accusantium sapiente voluptates soluta fuga dolorem, dolor laboriosam nesciunt harum cumque saepe neque voluptatem cum hic labore assumenda at facere repellendus! Saepe numquam<br><br> omnis ullam, distinctio sequi ab. Quidem repellendus facilis repellat sit corrupti optio ea nam iste dignissimos cumque harum, quod distinctio! Quaerat minus fugit asperiores soluta ducimus ea nihil impedit adipisci sit, sint ad temporibus iure numquam quis illo voluptates, facilis consectetur dolores. Praesentium aut accusamus impedit nemo et libero quasi quisquam, quae quo deserunt adipisci, animi magni voluptatibus dolore consectetur saepe nostrum voluptatum delectus in commodi molestiae modi?</p>
+        </div>
+        <div class="imgBx">
+            <img src="images/bg1.jpg" alt="">
+        </div>
+    </div>
+</section>
+  <section class="services" id="services">
+    <div class="title">
+        <h2>Our Services</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati veritatis quae nam. Dolores rem deserunt temporibus sint accusantium, nisi soluta.</p>
+    </div>
+    <div class="content">
+        <div class="serviceBx">
+            <img src="images/icon1.png" alt="">
+            <h2>Web Design</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+        <div class="serviceBx">
+            <img src="images/icon2.png" alt="">
+            <h2>Web Development</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+        <div class="serviceBx">
+            <img src="images/icon3.png" alt="">
+            <h2>Android Apps</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+        <div class="serviceBx">
+            <img src="images/icon4.png" alt="">
+            <h2>Photography</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+        <div class="serviceBx">
+            <img src="images/icon5.png" alt="">
+            <h2>Content Writing</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+        <div class="serviceBx">
+            <img src="images/icon6.png" alt="">
+            <h2>Video Editing</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias corporis quasi pariatur labore optio perspiciatis harum, laudantium quaerat quos ut. Laborum minima, ipsam quod accusamus sint fuga! Voluptates, perferendis est!</p>
+        </div>
+    </div>
+</section>
+<section class="work" id="work">
+    <div class="title">
+        <h2>Recent Work</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse repudiandae porro voluptates tempora dolor est.</p>
+    </div> 
+    <div class="content">
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img1.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 01</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img2.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 02</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img3.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 03</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img4.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 04</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img5.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 05</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img6.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 06</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img7.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 07</h3>
+            </div>
+        </div>
+        <div class="workbx">
+            <div class="imgBx">
+                <img src="images/img8.webp" alt="">
+            </div>
+            <div class="textBx">
+                <h3>Project 08</h3>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="contact" id="contacts">
+    <div class="title white">
+        <h2>Contact Us</h2>
+        <p>Lorem ipsum dolor sit amet consectetur.</p>
+    </div>
+    <div class="contactForm">
+        <div class="row">
+            <div class="col50">
+                <input type="text" placeholder="First Name">
+            </div>
+            <div class="col50">
+                <input type="text" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col50">
+                <input type="text" placeholder="Email">
+            </div>
+            <div class="col50">
+                <input type="text" placeholder="Mobile No.">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col100">
+                <textarea placeholder="Message"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col100">
+                <input type="submit" value="Send">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sidebar">
+    <ul class="menu">
+        <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+        <li><a href="#about" onclick="toggleMenu()">About</a></li>
+        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+        <li><a href="#work" onclick="toggleMenu()">Work</a></li>
+        <li><a href="#contacts" onclick="toggleMenu()">Contacts</a></li>
+    </ul>
+</div>
+
+<script>
+    function toggleMenu(){
+        const menuToggle = document.querySelector('.toggle');
+        const slider = document.querySelector('.sidebar')
+        menuToggle.classList.toggle('active')
+        slider.classList.toggle('active')
+    }
+</script>
+<!-- 
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jquery.js"></script> -->
+</body>
+</html>
